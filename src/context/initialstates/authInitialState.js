@@ -1,6 +1,7 @@
 export default {
-    auth: {
-        loading: false,
-        user: null,
-    }
-}
+  auth: {
+    loading: false,
+    data: null,
+    error: null,
+  },
+};
