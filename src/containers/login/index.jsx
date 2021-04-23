@@ -1,6 +1,8 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { GlobalContext } from "../../context/Provider";
+import LoginUI from "../../layout/login";
+import useForm from "./useForm";
 const LoginContainer = () => {
   const {
     authdispatch,
@@ -9,12 +11,7 @@ const LoginContainer = () => {
     },
   } = useContext(GlobalContext);
   console.log("data", data);
-  return (
-    <div>
-      <h1>{data ? `welcome ${data.username}` : "Login Here"}Login</h1>
-      <Link to="/auth/register">Register</Link>
-    </div>
-  );
+  return <LoginUI form={useForm()} />;
 };
 
 export default LoginContainer;

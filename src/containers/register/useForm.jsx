@@ -1,7 +1,7 @@
-import { useContext, useEffect, useState } from "react";
-import { useHistory } from "react-router";
-import { register } from "../../context/actions/auth/register";
+import { useState, useContext, useEffect } from "react";
 import { GlobalContext } from "../../context/Provider";
+import { register } from "../../context/actions/auth/register";
+import { useHistory } from "react-router-dom";
 
 export default () => {
   const [form, setForm] = useState({});
@@ -10,7 +10,7 @@ export default () => {
   const history = useHistory();
 
   const {
-    authdispatch,
+    authDispatch,
     authState: {
       auth: { loading, error, data },
     },
@@ -26,28 +26,24 @@ export default () => {
 
   useEffect(() => {
     if (data) {
-      history.push("auth/login");
+      history.push("/auth/login");
     }
   }, [data]);
-  console.log("loading", loading);
-  console.log("error", error);
-  console.log("data", data);
 
   const onChange = (e, { name, value }) => {
     setForm({ ...form, [name]: value });
   };
-  // console.log("form", form);
 
   const registerFormValid =
     !form.username?.length ||
     !form.firstName?.length ||
     !form.lastName?.length ||
-    !form.email?.length ||
-    !form.password?.length;
+    !form.password?.length ||
+    !form.email?.length;
 
-  const onSubmit = (form) => {
+  const onSubmit = () => {
     setFieldErrors({});
-    register(form)(authdispatch);
+    register(form)(authDispatch);
   };
 
   return { form, onChange, loading, fieldErrors, registerFormValid, onSubmit };
