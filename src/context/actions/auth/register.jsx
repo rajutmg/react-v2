@@ -6,23 +6,31 @@ import {
 } from "../../../constants/actionTypes/index";
 
 export const register = ({
+  name,
   email,
   password,
-  username,
-  lastName: last_name,
-  firstName: first_name,
+  c_password,
+  phone_number,
+  district_id,
+  ward_id,
+  municipality_id,
+  company_id,
 }) => (dispatch) => {
   dispatch({
     type: REGISTER_LOADING,
   });
 
   axiosInstance()
-    .post("/auth/register", {
+    .post("/register", {
+      name,
       email,
       password,
-      username,
-      last_name,
-      first_name,
+      c_password,
+      phone_number,
+      district_id,
+      ward_id,
+      municipality_id,
+      company_id,
     })
     .then((res) => {
       dispatch({

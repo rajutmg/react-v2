@@ -21,7 +21,7 @@ export default () => {
   };
 
   console.log("form", form);
-  const loginFormValid = !form.username?.length || !form.password?.length;
+  const loginFormValid = !form.email?.length || !form.password?.length;
 
   const onSubmit = () => {
     login(form)(authDispatch);
@@ -29,9 +29,7 @@ export default () => {
 
   useEffect(() => {
     if (data) {
-      if (data.user) {
-        history.push("/");
-      }
+      history.push("/user");
     }
   }, [data]);
 

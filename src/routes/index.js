@@ -1,7 +1,7 @@
 import RegisterComponent from "../containers/register/index";
 import LoginComponent from "../containers/login/index";
-import ContactsComponent from "../containers/contacts/index";
-import CreateContactComponent from "../containers/createcontact/index";
+import Home from "../components/home/Home";
+import Profile from "../components/Profile";
 
 const routes = [
   {
@@ -17,16 +17,16 @@ const routes = [
     needsAuth: false,
   },
   {
-    path: "/",
-    component: ContactsComponent,
-    title: "Contacts",
+    path: "/user",
+    component: Profile,
+    title: "Profile",
     needsAuth: true,
   },
   {
-    path: "/contacts/create",
-    component: CreateContactComponent,
-    title: "Create Contact",
-    needsAuth: true,
+    path: "/",
+    component: Home,
+    title: "Home",
+    needsAuth: false,
   },
 ];
 

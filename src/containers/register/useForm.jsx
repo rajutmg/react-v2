@@ -35,12 +35,13 @@ export default () => {
   };
 
   const registerFormValid =
-    !form.username?.length ||
-    !form.firstName?.length ||
-    !form.lastName?.length ||
+    !form.name?.length ||
+    !form.email?.length ||
     !form.password?.length ||
-    !form.email?.length;
-
+    !form.phone_number?.length ||
+    !form.ward_id?.length ||
+    !form.municipality_id?.length ||
+    !form.company_id?.length;
   const onSubmit = () => {
     setFieldErrors({});
     register(form)(authDispatch);

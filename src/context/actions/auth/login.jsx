@@ -5,15 +5,15 @@ import {
   LOGIN_ERROR,
 } from "../../../constants/actionTypes/index";
 
-export const login = ({ password, username }) => (dispatch) => {
+export const login = ({ email, password }) => (dispatch) => {
   dispatch({
     type: LOGIN_LOADING,
   });
 
   axiosInstance()
-    .post("/auth/login", {
+    .post("/login", {
+      email,
       password,
-      username,
     })
     .then((res) => {
       localStorage.token = res.data.token;

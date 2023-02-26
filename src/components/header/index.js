@@ -1,35 +1,61 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Menu, Image, Button, Icon } from "semantic-ui-react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useHistory } from "react-router-dom";
 import logo from "../../assets/images/logo.png";
-function Header() {
+import logout from "../../context/actions/auth/logout";
+import { GlobalContext } from "../../context/Provider";
+import isAuthenticated from "../../utils/isAuthenticated";
+
+const Header = () => {
   const { pathname } = useLocation();
-  console.log("location", pathname);
+  const history = useHistory();
+
+  const { contactsDispatch: dispatch } = useContext(GlobalContext);
+
+  const handleUserLogout = () => {
+    logout(history)(dispatch);
+  };
 
   return (
-    <Menu secondary pointing>
-      <Image src={logo} height={60} />
-      <Menu.Item as={Link} to="/" style={{ fontSize: 24 }}>
-        TrulyContacts
+    <Menu secondary pointing className="mainMenu">
+      <Link to="/">
+        <Image className="logo" src={logo} />
+      </Link>
+      <Menu.Item position="right">
+        <Button as={Link} to="/" className="menuBtn">
+          Home
+        </Button>
       </Menu.Item>
-      {pathname === "/" && (
-        <Menu.Item position="right">
-          <Button as={Link} to="/contacts/create" primary basic icon>
-            <Icon name="add"></Icon>
-            Create Contact
+      {!isAuthenticated() && (
+        <Menu.Item>
+          <Button as={Link} to="/auth/login" className="menuBtn">
+            Login
           </Button>
         </Menu.Item>
       )}
-      {pathname === "/" && (
+      {!isAuthenticated() && (
         <Menu.Item>
-          <Button color="red" basic icon>
-            <Icon name="log out"></Icon>
+          <Button as={Link} to="/auth/register" className="menuBtn">
+            Register
+          </Button>
+        </Menu.Item>
+      )}
+      {isAuthenticated() && (
+        <Menu.Item>
+          <Button as={Link} to="/user" className="menuBtn">
+            User Profile
+          </Button>
+        </Menu.Item>
+      )}
+      {isAuthenticated() && (
+        <Menu.Item>
+          <Button onClick={handleUserLogout} className="menuBtn">
             Logout
           </Button>
         </Menu.Item>
       )}
     </Menu>
   );
-}
+};
 
 export default Header;

@@ -4,3 +4,4 @@ export const REGISTER_ERROR = "REGISTER_ERROR";
 export const LOGIN_LOADING = "LOGIN_LOADING";
 export const LOGIN_SUCCESS = "LOGIN_SUCESS";
 export const LOGIN_ERROR = "LOGIN_ERROR";
+export const LOGOUT_USER = "LOGOUT_USERS";
