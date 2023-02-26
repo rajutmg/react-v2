@@ -1,23 +1,25 @@
 import React from "react";
-import Header from "../../components/header";
 import {
-  Button,
   Form,
+  Button,
   Grid,
   Header as SemanticHeader,
   Segment,
 } from "semantic-ui-react";
+import Header from "../../components/Header";
 import { Link } from "react-router-dom";
 
 const RegisterUI = ({
   form: { onChange, form, registerFormValid, onSubmit, loading, fieldErrors },
 }) => {
   return (
-    <>
+    <div>
       <Header />
+
       <Grid centered>
         <Grid.Column style={{ maxWidth: 550, marginTop: 20 }}>
           <SemanticHeader>Signup Here</SemanticHeader>
+
           <Segment>
             <Form>
               <Form.Field>
@@ -116,7 +118,7 @@ const RegisterUI = ({
           </Segment>
         </Grid.Column>
       </Grid>
-    </>
+    </div>
   );
 };
 

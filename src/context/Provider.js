@@ -1,8 +1,8 @@
 import React, { createContext, useReducer, Children } from "react";
 import auth from "./reducers/auth";
-import authInitialState from "./initialstates/authInitialState";
+import authInitialState from "./intialstates/authInitialState";
 import contacts from "./reducers/contacts";
-import contactsInitialState from "./initialstates/contactsInitialState";
+import contactsInitialState from "./intialstates/contactsInitialState";
 
 export const GlobalContext = createContext({});
 
