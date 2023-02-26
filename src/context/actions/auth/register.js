@@ -3,7 +3,7 @@ import {
   REGISTER_LOADING,
   REGISTER_SUCCESS,
   REGISTER_ERROR,
-} from "../../../constants/actionTypes/index";
+} from "../../../constants/actionTypes";
 
 export const register = ({
   name,

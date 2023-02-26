@@ -1,20 +1,21 @@
 import React from "react";
-import Header from "../../components/header";
 import {
-  Button,
   Form,
+  Button,
   Grid,
   Header as SemanticHeader,
   Segment,
 } from "semantic-ui-react";
+import Header from "../../components/Header";
 import { Link } from "react-router-dom";
 
 const RegisterUI = ({
   form: { onChange, form, registerFormValid, onSubmit, loading, fieldErrors },
 }) => {
   return (
-    <>
+    <div>
       <Header />
+<<<<<<< HEAD
       <section className="secGap">
         <Grid centered>
           <Grid.Column style={{ maxWidth: 550, marginTop: 20 }}>
@@ -33,6 +34,26 @@ const RegisterUI = ({
                         content: fieldErrors.name,
                         pointing: "below",
                       }
+=======
+
+      <Grid centered>
+        <Grid.Column style={{ maxWidth: 550, marginTop: 20 }}>
+          <SemanticHeader>Signup Here</SemanticHeader>
+
+          <Segment>
+            <Form>
+              <Form.Field>
+                <Form.Input
+                  value={form.username || ""}
+                  onChange={onChange}
+                  name="username"
+                  placeholder="Username"
+                  label="Username"
+                  error={
+                    fieldErrors.username && {
+                      content: fieldErrors.username,
+                      pointing: "below",
+>>>>>>> a38cd17c33a8407cd58848f9a0936c7475ba66ae
                     }
                   />
                 </Form.Field>
@@ -180,10 +201,17 @@ const RegisterUI = ({
                 Already have an account? <Link to="/auth/login">Login</Link>.
               </Segment>
             </Segment>
+<<<<<<< HEAD
           </Grid.Column>
         </Grid>
       </section>
     </>
+=======
+          </Segment>
+        </Grid.Column>
+      </Grid>
+    </div>
+>>>>>>> a38cd17c33a8407cd58848f9a0936c7475ba66ae
   );
 };
 
